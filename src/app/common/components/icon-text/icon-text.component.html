@@ -1,0 +1,11 @@
+<div class="icon-text__icon-container">
+  <ng-content />
+</div>
+
+@if (text) {
+<span class="icon-text__text">{{ text }}</span>
+} @else {
+<div class="icon-text__spinner-container">
+  <app-spinner />
+</div>
+}

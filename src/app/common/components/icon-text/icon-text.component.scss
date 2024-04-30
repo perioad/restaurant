@@ -1,0 +1,26 @@
+:host {
+  color: #a8a8c8;
+  display: flex;
+  align-items: center;
+}
+
+.icon-text {
+  &__icon-container {
+    width: 13px;
+    height: 13px;
+  }
+
+  &__text {
+    font-size: 10px;
+    line-height: 16px;
+    margin-left: 3px;
+  }
+
+  &__spinner-container {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: -2px;
+    left: 4px;
+  }
+}

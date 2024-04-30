@@ -1,0 +1,7 @@
+<h1 class="restaurants__title">Restaurantes</h1>
+
+<div class="restaurants__container">
+  @for (restaurant of restaurants; track restaurant.id) {
+  <app-restaurant-card [restaurant]="restaurant" />
+  } @empty { Sorry, restaurants are being built. Please come back later. }
+</div>
