@@ -9,16 +9,16 @@ export class GeolocationService {
   private currentPosition: GeolocationCoordinates | null = null;
 
   getDistanceFromCurrentPosition$(
-    coordinates: Coordinates
+    coordinates: Coordinates,
   ): Observable<string> {
     return from(this.getDistanceFromCurrentPosition(coordinates)).pipe(
       map((distance) => `${distance} km`),
-      catchError(() => of('Unknown'))
+      catchError(() => of('Unknown')),
     );
   }
 
   private async getDistanceFromCurrentPosition(
-    coordinates: Coordinates
+    coordinates: Coordinates,
   ): Promise<number> {
     if (!this.currentPosition) {
       this.currentPosition = await this.getCurrentPosition();
@@ -28,7 +28,7 @@ export class GeolocationService {
       this.currentPosition.latitude,
       this.currentPosition.longitude,
       coordinates.latitude,
-      coordinates.longitude
+      coordinates.longitude,
     );
   }
 
@@ -37,11 +37,11 @@ export class GeolocationService {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position: GeolocationPosition) => {
-            reject(position.coords);
+            resolve(position.coords);
           },
           (error: GeolocationPositionError) => {
             reject(error);
-          }
+          },
         );
       } else {
         reject(new Error('Geolocation is not supported by this browser.'));
@@ -53,7 +53,7 @@ export class GeolocationService {
     lat1: number,
     lon1: number,
     lat2: number,
-    lon2: number
+    lon2: number,
   ): number {
     const R = 6371;
     const dLat = this.deg2rad(lat2 - lat1);

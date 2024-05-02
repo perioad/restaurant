@@ -1,0 +1,41 @@
+@import "variables";
+
+.input {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9fb;
+  height: 48px;
+  width: 100%;
+  border-radius: 10px;
+  transition: all 0.3s ease-out;
+
+  &--focused {
+    outline: 2px solid $color-focus-outline;
+    box-shadow: 0 6px 11px $color-main-dark-dim;
+    transform: translateY(-1px);
+  }
+
+  &__icon-container {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__input {
+    background-color: inherit;
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    padding: 0 10px;
+    outline: none;
+  }
+
+  &__reset-btn {
+    margin-right: 15px;
+  }
+}

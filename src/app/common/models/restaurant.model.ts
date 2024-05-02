@@ -1,4 +1,4 @@
-import { Coordinates } from './coordinates.model';
+import { Coordinates } from '../../core/models/coordinates.model';
 
 export type Restaurant = {
   id: string;

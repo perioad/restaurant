@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.catalog {
+  &__tabs {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 2px 20px 0;
+    margin-bottom: 20px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(2, 152px);
+    grid-auto-rows: 178px;
+    gap: 20px;
+    padding: 0 20px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 152px);
+    }
+  }
+}

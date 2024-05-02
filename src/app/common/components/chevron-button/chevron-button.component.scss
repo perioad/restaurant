@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.chevron-button {
+  &__icon {
+    &--down {
+      transform: rotate(180deg);
+    }
+
+    &--right {
+      transform: rotate(90deg);
+    }
+
+    &--left {
+      transform: rotate(-90deg);
+    }
+  }
+}

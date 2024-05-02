@@ -1,0 +1,40 @@
+<div class="product__img-container">
+  @if (!isImgError) {
+    <img
+      class="product__img"
+      alt=""
+      [src]="product.image"
+      (error)="handleImgError()"
+    />
+  } @else {
+    <app-image-placeholder class="product__img" />
+  }
+</div>
+
+<h4 class="product__title">{{ product.name }}</h4>
+
+<footer class="product__footer">
+  <p class="product__price">{{ product.price | currency }}</p>
+
+  <div class="product__controls">
+    @if (productQuantity) {
+      <button
+        class="product__minus-btn"
+        title="Remove product from cart"
+        (click)="removeProduct()"
+      >
+        <app-minus-icon />
+      </button>
+
+      <span>{{ productQuantity }}</span>
+    }
+
+    <button
+      class="product__plus-btn"
+      title="Add product to cart"
+      (click)="selectProduct()"
+    >
+      <app-plus-icon />
+    </button>
+  </div>
+</footer>

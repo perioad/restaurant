@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../../../core/components/spinner/spinner.component';
 
 @Component({
   selector: 'app-icon-text',

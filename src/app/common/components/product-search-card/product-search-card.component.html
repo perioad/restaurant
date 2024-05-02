@@ -1,0 +1,12 @@
+<img class="product-search-card__img" [src]="product.image" alt="" />
+
+<div class="product-search-card__details">
+  <h4>{{ product.name }}</h4>
+  <span class="product-search-card__price">{{ product.price | currency }}</span>
+</div>
+
+<app-chevron-button
+  class="product-search-card__choose-btn"
+  direction="right"
+  [title]="'Choose product'"
+/>

@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "reset";
+@import "variables";
 
 * {
-  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -9,23 +10,16 @@
 
 body {
   margin: 0;
-  background-color: black;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, #000 0%, #444 50%, #000 100%);
 }
 
-.poppins-regular {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+.btn-light {
+  background-color: $color-main-light-dim;
+  color: $color-main-dark;
 }
 
-.poppins-medium {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.poppins-semibold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
+.btn-dark {
+  background-color: $color-main-dark-dim;
+  color: $color-main-light;
 }

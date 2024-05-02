@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.details {
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  &__subtitle {
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #a8a8c8;
+  }
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 6px;
+  }
+}

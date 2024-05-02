@@ -1,7 +1,17 @@
 <h1 class="restaurants__title">Restaurantes</h1>
 
-<div class="restaurants__container">
+@if (restaurants$ | async; as restaurants) {
   @for (restaurant of restaurants; track restaurant.id) {
-  <app-restaurant-card [restaurant]="restaurant" />
-  } @empty { Sorry, restaurants are being built. Please come back later. }
-</div>
+    <app-restaurant-card
+      class="restaurants__card"
+      routerLink="/restaurant/{{ restaurant.id }}"
+      [state]="restaurant"
+      [restaurant]="restaurant"
+      [logoSize]="55"
+    />
+  } @empty {
+    Sorry, restaurants are being built. Please come back later.
+  }
+} @else {
+  <app-loading />
+}

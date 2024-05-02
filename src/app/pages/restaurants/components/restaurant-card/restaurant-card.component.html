@@ -1,23 +1,45 @@
-<img class="restaurant-card__bg-img" [src]="restaurant.image" alt="" />
+<div class="restaurant-card__bg-img-container">
+  @if (!isImgError) {
+    <img
+      class="restaurant-card__bg-img"
+      alt=""
+      [src]="restaurant.image"
+      (error)="handleImgError()"
+    />
+  } @else {
+    <app-image-placeholder />
+  }
+</div>
 
 <div class="restaurant-card__info">
-  <div class="restaurant-card__logo-img-container">
-    <img class="restaurant-card__logo-img" [src]="restaurant.logo" alt="" />
+  <div
+    class="restaurant-card__logo-img-container"
+    [style.width]="logoSize + 'px'"
+    [style.height]="logoSize + 'px'"
+  >
+    @if (!isLogoError) {
+      <img
+        class="restaurant-card__logo-img"
+        alt=""
+        [src]="restaurant.logo"
+        (error)="handleLogoError()"
+      />
+    } @else {
+      <app-image-placeholder />
+    }
   </div>
 
-  <div class="restaurant-card__details">
-    <h3 class="restaurant-card__name">{{ restaurant.name | uppercase }}</h3>
+  <app-details
+    class="restaurant-card__details"
+    [title]="restaurant.name | uppercase"
+    subtitle="Comida rápida"
+  >
+    <app-icon-text [text]="rating()">
+      <app-star-icon />
+    </app-icon-text>
 
-    <span class="restaurant-card__type">Comida rápida</span>
-
-    <div class="restaurant-card__metadata">
-      <app-icon-text [text]="rating()">
-        <app-star-icon />
-      </app-icon-text>
-
-      <app-icon-text [text]="distanceKm | async">
-        <app-map-pin-icon />
-      </app-icon-text>
-    </div>
-  </div>
+    <app-icon-text [text]="distanceKm | async">
+      <app-map-pin-icon />
+    </app-icon-text>
+  </app-details>
 </div>

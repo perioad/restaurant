@@ -1,0 +1,25 @@
+@import "variables";
+
+.tab {
+  &__button {
+    border: none;
+    background-color: transparent;
+    color: $color-main-dark;
+    line-height: 18px;
+    padding: 10px 12px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    border: 1px solid transparent;
+    margin: 0 2px;
+
+    &--selected {
+      background-color: $color-main-dark;
+      color: $color-main-light;
+    }
+
+    &:hover {
+      border: 1px solid $color-main-dark;
+    }
+  }
+}

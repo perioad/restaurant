@@ -1,73 +1,42 @@
+@import "variables";
+
 :host {
   display: block;
   position: relative;
-  border-radius: 14px;
-  box-shadow: 0px 1px 3px 0px #d6d5db33;
   overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
   min-height: 206px;
-
-  &:hover {
-    box-shadow: 0px 5px 10px 3px #d6d5db33;
-  }
 }
 
 .restaurant-card {
+  position: relative;
+
   &__bg-img,
   &__logo-img {
     width: 100%;
+    object-fit: contain;
   }
 
-  &__bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
+  &__bg-img-container {
+    min-height: 130px;
   }
 
   &__logo-img-container {
-    width: 55px;
-    height: 55px;
     overflow: hidden;
     border-radius: 14px;
-    box-shadow: 0px 1px 3px 0px #d6d5db33;
-    background-color: white;
+    box-shadow: 0px 1px 3px 0px $color-box-shadow;
+    background-color: $color-main-light;
   }
 
   &__info {
     display: flex;
-    margin-top: 135px;
-    margin-left: 15px;
-    margin-bottom: 20px;
-    gap: 15px;
     position: relative;
-    bottom: 30px;
+    left: 20px;
+    gap: 15px;
+    bottom: 25px;
   }
 
   &__details {
-    display: flex;
-    flex-direction: column;
     position: relative;
     top: 35px;
-  }
-
-  &__name {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-  }
-
-  &__type {
-    margin-top: 3px;
-    font-size: 12px;
-    line-height: 16px;
-    color: #a8a8c8;
-  }
-
-  &__metadata {
-    display: flex;
-    gap: 15px;
-    margin-top: 6px;
   }
 }

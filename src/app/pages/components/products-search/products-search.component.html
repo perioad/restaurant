@@ -1,0 +1,22 @@
+<app-chevron-button
+  class="products-search__back-btn"
+  direction="left"
+  [title]="'Navigate back'"
+  (click)="handleCloseSearch()"
+/>
+
+<app-input
+  class="products-search__input"
+  placeholder="Busca restaurantes o productos"
+  [isWithReset]="true"
+  [focusOnInit]="true"
+  (valueChange)="handleSearchChange($event)"
+>
+  <app-magnifying-icon />
+</app-input>
+
+<div class="products-search__products">
+  @for (product of foundProducts; track product.name) {
+    <app-product-search-card [product]="product" />
+  }
+</div>

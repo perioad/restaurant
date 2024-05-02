@@ -1,0 +1,20 @@
+<div class="catalog__tabs">
+  @for (group of catalog; track group.name) {
+    <app-tab
+      [tab]="group.name"
+      [isSelected]="group.name === selectedGroup?.name"
+      (click)="selectTab(group.name)"
+    />
+  }
+</div>
+
+<div class="catalog__products">
+  @for (product of selectedGroup?.products; track product.name) {
+    <app-product
+      [product]="product"
+      [productQuantity]="getProductQuantity(product)"
+      (productAdded)="addToCart($event)"
+      (productRemoved)="removeFromCart($event)"
+    />
+  }
+</div>
