@@ -17,6 +17,6 @@
 
 <div class="products-search__products">
   @for (product of foundProducts; track product.name) {
-    <app-product-search-card [product]="product" />
+    <app-product-search-card @enterTrigger [product]="product" />
   }
 </div>

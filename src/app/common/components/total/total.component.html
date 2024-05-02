@@ -1,5 +1,10 @@
 @if (total$ | async; as total) {
-  <button type="button" class="total__btn" routerLink="/hooray">
+  <button
+    @enterLeaveTrigger
+    type="button"
+    class="total__btn"
+    routerLink="/hooray"
+  >
     Total: ({{ total | currency: false }})
   </button>
 }

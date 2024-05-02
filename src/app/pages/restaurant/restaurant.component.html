@@ -32,6 +32,7 @@
 
   @if (isSearchOpen) {
     <app-products-search
+      @enterLeaveTrigger
       class="restaurant__search"
       [catalog]="data.catalog"
       (closeSearch)="closeSearch()"

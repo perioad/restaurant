@@ -1,4 +1,13 @@
-<img class="product-search-card__img" [src]="product.image" alt="" />
+@if (!isImgError) {
+  <img
+    class="product-search-card__img"
+    alt=""
+    [src]="product.image"
+    (error)="handleImgError()"
+  />
+} @else {
+  <app-image-placeholder class="product-search-card__img-placeholder" />
+}
 
 <div class="product-search-card__details">
   <h4>{{ product.name }}</h4>

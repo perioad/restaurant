@@ -6,7 +6,8 @@
 }
 
 .product-search-card {
-  &__img {
+  &__img,
+  &__img-placeholder {
     width: 60px;
     object-fit: contain;
     border-radius: 9px;

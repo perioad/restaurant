@@ -17,6 +17,7 @@ import { MagnifyingButtonComponent } from '../../common/components/magnifying-bu
 import { StarButtonComponent } from '../../common/components/star-button/star-button.component';
 import { ProductsSearchComponent } from './components/products-search/products-search.component';
 import { LoadingComponent } from '../../common/components/loading/loading.component';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-restaurant',
@@ -35,6 +36,15 @@ import { LoadingComponent } from '../../common/components/loading/loading.compon
   ],
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss',
+  animations: [
+    trigger('enterLeaveTrigger', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('100ms', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [animate('100ms', style({ opacity: 0 }))]),
+    ]),
+  ],
 })
 export class RestaurantComponent implements OnInit {
   @Input() id!: string;
