@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Catalog } from '../../../common/models/catalog.model';
-import { InputComponent } from '../../../common/components/input/input.component';
-import { MagnifyingIconComponent } from '../../../common/icons/magnifying/magnifying.component';
-import { Product } from '../../../common/models/product.model';
-import { findProducts } from '../../../common/utils/products.utils';
-import { ChevronButtonComponent } from '../../../common/components/chevron-button/chevron-button.component';
-import { ProductSearchCardComponent } from '../../../common/components/product-search-card/product-search-card.component';
+import { Catalog } from '../../../../common/models/catalog.model';
+import { InputComponent } from '../../../../common/components/input/input.component';
+import { MagnifyingIconComponent } from '../../../../common/icons/magnifying/magnifying.component';
+import { Product } from '../../../../common/models/product.model';
+import { findProducts } from '../../../../common/utils/products.utils';
+import { ChevronButtonComponent } from '../../../../common/components/chevron-button/chevron-button.component';
+import { ProductSearchCardComponent } from '../../../../common/components/product-search-card/product-search-card.component';
 
 @Component({
   selector: 'app-products-search',

@@ -23,3 +23,8 @@ body {
   background-color: $color-main-dark-dim;
   color: $color-main-light;
 }
+
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 300ms;
+}

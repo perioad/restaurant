@@ -1,3 +1,5 @@
+$max-width: 768px;
+
 :host {
   display: block;
   width: 100%;
@@ -13,9 +15,9 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 5;
+    z-index: 3;
     width: calc(100% - 40px);
-    max-width: calc(768px - 40px);
+    max-width: calc($max-width - 40px);
 
     &--no-overlap {
       position: static;
@@ -31,13 +33,23 @@
   }
 
   &__card {
-    max-width: 768px;
+    max-width: $max-width;
     margin: 0 auto;
   }
 
   &__catalog {
     max-width: fit-content;
     margin: 10px auto 0;
+  }
+
+  &__search {
+    max-width: $max-width;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    padding: 0 20px;
   }
 
   &__total {

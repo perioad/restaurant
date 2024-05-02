@@ -1,5 +1,5 @@
 @if (total$ | async; as total) {
-  <button type="button" class="total__btn">
+  <button type="button" class="total__btn" routerLink="/hooray">
     Total: ({{ total | currency: false }})
   </button>
 }

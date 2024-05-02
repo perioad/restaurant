@@ -1,10 +1,13 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { RestaurantService } from '../../common/services/restaurant.service';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, map, of, shareReplay } from 'rxjs';
 import { Router } from '@angular/router';
-import { Restaurant } from '../../common/models/restaurant.model';
+import {
+  ResponseRestaurant,
+  Restaurant,
+} from '../../common/models/restaurant.model';
 import { RestaurantCardComponent } from '../restaurants/components/restaurant-card/restaurant-card.component';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { CatalogComponent } from '../../common/components/catalog/catalog.component';
 import { Catalog } from '../../common/models/catalog.model';
 import { NavigationService } from '../../core/services/navigation.service';
@@ -12,7 +15,7 @@ import { ChevronButtonComponent } from '../../common/components/chevron-button/c
 import { TotalComponent } from '../../common/components/total/total.component';
 import { MagnifyingButtonComponent } from '../../common/components/magnifying-button/magnifying-button.component';
 import { StarButtonComponent } from '../../common/components/star-button/star-button.component';
-import { ProductsSearchComponent } from '../components/products-search/products-search.component';
+import { ProductsSearchComponent } from './components/products-search/products-search.component';
 import { LoadingComponent } from '../../common/components/loading/loading.component';
 
 @Component({
@@ -28,6 +31,7 @@ import { LoadingComponent } from '../../common/components/loading/loading.compon
     StarButtonComponent,
     ProductsSearchComponent,
     LoadingComponent,
+    NgIf,
   ],
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss',
@@ -35,25 +39,39 @@ import { LoadingComponent } from '../../common/components/loading/loading.compon
 export class RestaurantComponent implements OnInit {
   @Input() id!: string;
 
-  private resturantService = inject(RestaurantService);
+  private restaurantService = inject(RestaurantService);
   private router = inject(Router);
   private navigationService = inject(NavigationService);
+  private restaurant$!: Observable<Restaurant>;
 
-  restaurant!: Restaurant;
   catalog$!: Observable<Catalog>;
   isSearchOpen = false;
+  data$!: Observable<{
+    restaurant: Restaurant;
+    catalog: Catalog;
+  }>;
 
   constructor() {
-    const state = this.router.getCurrentNavigation()?.extras
+    const restaurantFromState = this.router.getCurrentNavigation()?.extras
       .state as Restaurant;
 
-    if (state) {
-      this.restaurant = state;
-    }
+    this.restaurant$ = restaurantFromState
+      ? of(restaurantFromState)
+      : this.restaurantService.getSortedRestaurants().pipe(
+          map((restaurants) => {
+            return restaurants.find(
+              (restaurant) => restaurant.id === this.id,
+            ) as Restaurant;
+          }),
+        );
   }
 
   ngOnInit(): void {
-    this.catalog$ = this.resturantService.getRestaurantCatalog(this.id);
+    this.catalog$ = this.restaurantService.getRestaurantCatalog(this.id);
+    this.data$ = combineLatest([this.restaurant$, this.catalog$]).pipe(
+      map(([restaurant, catalog]) => ({ restaurant, catalog })),
+      shareReplay(1),
+    );
   }
 
   navigateBack(): void {

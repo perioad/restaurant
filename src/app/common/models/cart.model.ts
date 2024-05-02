@@ -7,7 +7,8 @@ type CartItem = {
 };
 
 type RestaurantCart = {
-  restaurantId: string;
+  id: string;
+  name: string;
   items: CartItem[];
 };
 

@@ -1,6 +1,6 @@
 import { Coordinates } from '../../core/models/coordinates.model';
 
-export type Restaurant = {
+export type ResponseRestaurant = {
   id: string;
   name: string;
   image: string;
@@ -10,4 +10,8 @@ export type Restaurant = {
     average: string;
   };
   coordinates: Coordinates;
+};
+
+export type Restaurant = ResponseRestaurant & {
+  distance: number;
 };

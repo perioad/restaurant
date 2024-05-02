@@ -16,5 +16,5 @@ import { LoadingComponent } from '../../common/components/loading/loading.compon
 })
 export class RestaurantsComponent {
   restaurants$: Observable<Restaurant[]> =
-    inject(RestaurantService).getRestaurants();
+    inject(RestaurantService).getSortedRestaurants();
 }

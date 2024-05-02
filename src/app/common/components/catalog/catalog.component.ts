@@ -4,7 +4,8 @@ import { TabComponent } from '../tab/tab.component';
 import { ProductComponent } from '../product/product.component';
 import { ProductGroup } from '../../models/product-group.model';
 import { Product } from '../../models/product.model';
-import { CheckoutService } from '../../services/checkout.service';
+import { CartService } from '../../services/cart.service';
+import { Restaurant } from '../../models/restaurant.model';
 
 @Component({
   selector: 'app-catalog',
@@ -14,10 +15,10 @@ import { CheckoutService } from '../../services/checkout.service';
   styleUrl: './catalog.component.scss',
 })
 export class CatalogComponent implements OnInit {
-  @Input({ required: true }) restaurantId!: string;
+  @Input({ required: true }) restaurant!: Restaurant;
   @Input({ required: true }) catalog!: Catalog;
 
-  private checkoutService = inject(CheckoutService);
+  private cartService = inject(CartService);
 
   selectedGroup: ProductGroup | null = null;
 
@@ -41,14 +42,14 @@ export class CatalogComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.checkoutService.addToCart(product, this.restaurantId);
+    this.cartService.addToCart(product, this.restaurant);
   }
 
   removeFromCart(product: Product) {
-    this.checkoutService.removeFromCart(product, this.restaurantId);
+    this.cartService.removeFromCart(product, this.restaurant);
   }
 
   getProductQuantity(product: Product): number {
-    return this.checkoutService.getProductQuantity(product, this.restaurantId);
+    return this.cartService.getProductQuantity(product, this.restaurant);
   }
 }

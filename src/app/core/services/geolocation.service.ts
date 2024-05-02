@@ -10,10 +10,10 @@ export class GeolocationService {
 
   getDistanceFromCurrentPosition$(
     coordinates: Coordinates,
-  ): Observable<string> {
+  ): Observable<number> {
     return from(this.getDistanceFromCurrentPosition(coordinates)).pipe(
-      map((distance) => `${distance} km`),
-      catchError(() => of('Unknown')),
+      map((distance) => distance),
+      catchError(() => of(-1)),
     );
   }
 

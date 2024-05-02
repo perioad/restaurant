@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { Cart } from '../models/cart.model';
 import { Product } from '../models/product.model';
-import { add, subtract } from '../../core/utils/math.utils';
+import { Restaurant } from '../models/restaurant.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CheckoutService {
+export class CartService {
   private _cart$ = new BehaviorSubject<Cart>({
     priceTotal: 0,
     restaurants: [],
@@ -16,16 +16,16 @@ export class CheckoutService {
   cart$ = this._cart$.asObservable();
   total$ = this.cart$.pipe(map((cart) => cart.priceTotal));
 
-  addToCart(product: Product, restaurantId: string): void {
+  addToCart(product: Product, chosenRestaurant: Restaurant): void {
     const cart = this._cart$.getValue();
 
     const restaurant = cart.restaurants.find(
-      (r) => r.restaurantId === restaurantId,
+      (restaurant) => restaurant.id === chosenRestaurant.id,
     );
 
     if (restaurant) {
       const item = restaurant.items.find(
-        (i) => i.product.name === product.name,
+        (item) => item.product.name === product.name,
       );
 
       if (item) {
@@ -40,7 +40,8 @@ export class CheckoutService {
       }
     } else {
       cart.restaurants.push({
-        restaurantId,
+        id: chosenRestaurant.id,
+        name: chosenRestaurant.name,
         items: [
           {
             product,
@@ -56,16 +57,16 @@ export class CheckoutService {
     this._cart$.next(cart);
   }
 
-  removeFromCart(product: Product, restaurantId: string): void {
+  removeFromCart(product: Product, chosenRestaurant: Restaurant): void {
     const cart = this._cart$.getValue();
 
     const restaurantIndex = cart.restaurants.findIndex(
-      (r) => r.restaurantId === restaurantId,
+      (restaurant) => restaurant.id === chosenRestaurant.id,
     );
 
     if (restaurantIndex !== -1) {
       const itemIndex = cart.restaurants[restaurantIndex].items.findIndex(
-        (i) => i.product.name === product.name,
+        (item) => item.product.name === product.name,
       );
 
       if (itemIndex !== -1) {
@@ -89,16 +90,16 @@ export class CheckoutService {
     }
   }
 
-  getProductQuantity(product: Product, restaurantId: string): number {
+  getProductQuantity(product: Product, chosenRestaurant: Restaurant): number {
     const cart = this._cart$.getValue();
 
     const restaurant = cart.restaurants.find(
-      (r) => r.restaurantId === restaurantId,
+      (restaurant) => restaurant.id === chosenRestaurant.id,
     );
 
     if (restaurant) {
       const item = restaurant.items.find(
-        (i) => i.product.name === product.name,
+        (item) => item.product.name === product.name,
       );
 
       if (item) {

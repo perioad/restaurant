@@ -1,39 +1,41 @@
-<div
-  class="restaurant__controls"
-  [class.restaurant__controls--no-overlap]="!restaurant"
->
-  <app-chevron-button
-    direction="left"
-    [title]="'Navigate back'"
-    (click)="navigateBack()"
-  />
+@if (data$ | async; as data) {
+  <div
+    class="restaurant__controls"
+    [class.restaurant__controls--no-overlap]="!data.restaurant"
+  >
+    <app-chevron-button
+      direction="left"
+      [title]="'Navigate back'"
+      (click)="navigateBack()"
+    />
 
-  <app-magnifying-button
-    class="restaurant__search-btn"
-    [title]="'Search products'"
-    (click)="showSearch()"
-  />
+    <app-magnifying-button
+      class="restaurant__search-btn"
+      [title]="'Search products'"
+      (click)="showSearch()"
+    />
 
-  <app-star-button [title]="'Add to favourites'" />
-</div>
+    <app-star-button [title]="'Add to favourites'" />
+  </div>
 
-@if (restaurant) {
   <app-restaurant-card
     class="restaurant__card"
-    [restaurant]="restaurant"
+    [restaurant]="data.restaurant"
     [logoSize]="74"
   />
-}
 
-@if (catalog$ | async; as catalog) {
   <app-catalog
     class="restaurant__catalog"
-    [catalog]="catalog"
-    [restaurantId]="id"
+    [catalog]="data.catalog"
+    [restaurant]="data.restaurant"
   />
 
   @if (isSearchOpen) {
-    <app-products-search [catalog]="catalog" (closeSearch)="closeSearch()" />
+    <app-products-search
+      class="restaurant__search"
+      [catalog]="data.catalog"
+      (closeSearch)="closeSearch()"
+    />
   }
 } @else {
   <app-loading />
