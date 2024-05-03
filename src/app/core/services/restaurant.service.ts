@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Restaurant, ResponseRestaurant } from '../models/restaurant.model';
-import { Catalog } from '../models/catalog.model';
+import {
+  Restaurant,
+  ResponseRestaurant,
+} from '../../common/models/restaurant.model';
+import { Catalog } from '../../common/models/catalog.model';
 import { Observable, forkJoin, map, of, switchMap, tap } from 'rxjs';
-import { GeolocationService } from '../../core/services/geolocation.service';
+import { GeolocationService } from './geolocation.service';
 
 @Injectable({
   providedIn: 'root',

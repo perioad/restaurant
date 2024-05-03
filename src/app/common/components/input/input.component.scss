@@ -3,7 +3,7 @@
 .input {
   display: flex;
   align-items: center;
-  background-color: #f9f9fb;
+  background-color: $bg-color-input;
   height: 48px;
   width: 100%;
   border-radius: 10px;
@@ -11,7 +11,7 @@
 
   &--focused {
     outline: 2px solid $color-focus-outline;
-    box-shadow: 0 6px 11px $color-main-dark-dim;
+    box-shadow: 0 2px 10px 0 $color-main-dark-dim;
     transform: translateY(-1px);
   }
 

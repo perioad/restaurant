@@ -4,7 +4,7 @@ import { TabComponent } from '../tab/tab.component';
 import { ProductComponent } from '../product/product.component';
 import { ProductGroup } from '../../models/product-group.model';
 import { Product } from '../../models/product.model';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../../core/services/cart.service';
 import { Restaurant } from '../../models/restaurant.model';
 
 @Component({
@@ -33,7 +33,7 @@ export class CatalogComponent implements OnInit {
 
     if (
       !nextSelectedGroup ||
-      nextSelectedGroup?.name === this.selectedGroup?.name
+      nextSelectedGroup.name === this.selectedGroup?.name
     ) {
       return;
     }

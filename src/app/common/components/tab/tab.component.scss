@@ -18,7 +18,8 @@
       color: $color-main-light;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       border: 1px solid $color-main-dark;
     }
   }

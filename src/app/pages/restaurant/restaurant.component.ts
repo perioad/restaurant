@@ -1,12 +1,9 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { RestaurantService } from '../../common/services/restaurant.service';
+import { RestaurantService } from '../../core/services/restaurant.service';
 import { Observable, combineLatest, map, of, shareReplay } from 'rxjs';
 import { Router } from '@angular/router';
-import {
-  ResponseRestaurant,
-  Restaurant,
-} from '../../common/models/restaurant.model';
-import { RestaurantCardComponent } from '../restaurants/components/restaurant-card/restaurant-card.component';
+import { Restaurant } from '../../common/models/restaurant.model';
+import { RestaurantCardComponent } from '../../common/components/restaurant-card/restaurant-card.component';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { CatalogComponent } from '../../common/components/catalog/catalog.component';
 import { Catalog } from '../../common/models/catalog.model';

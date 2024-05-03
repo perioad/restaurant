@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { StarIconComponent } from '../../icons/star/star.component';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 

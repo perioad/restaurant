@@ -1,45 +1,49 @@
 @if (data$ | async; as data) {
-  <div
-    class="restaurant__controls"
-    [class.restaurant__controls--no-overlap]="!data.restaurant"
-  >
-    <app-chevron-button
-      direction="left"
-      [title]="'Navigate back'"
-      (click)="navigateBack()"
+  @if (data.catalog) {
+    <div
+      class="restaurant__controls"
+      [class.restaurant__controls--no-overlap]="!data.restaurant"
+    >
+      <app-chevron-button
+        direction="left"
+        [title]="'Navigate back'"
+        (click)="navigateBack()"
+      />
+
+      <app-magnifying-button
+        class="restaurant__search-btn"
+        [title]="'Search products'"
+        (click)="showSearch()"
+      />
+
+      <app-star-button [title]="'Add to favourites'" />
+    </div>
+
+    <app-restaurant-card
+      class="restaurant__card"
+      [restaurant]="data.restaurant"
+      [logoSize]="74"
     />
 
-    <app-magnifying-button
-      class="restaurant__search-btn"
-      [title]="'Search products'"
-      (click)="showSearch()"
-    />
-
-    <app-star-button [title]="'Add to favourites'" />
-  </div>
-
-  <app-restaurant-card
-    class="restaurant__card"
-    [restaurant]="data.restaurant"
-    [logoSize]="74"
-  />
-
-  <app-catalog
-    class="restaurant__catalog"
-    [catalog]="data.catalog"
-    [restaurant]="data.restaurant"
-  />
-
-  @if (isSearchOpen) {
-    <app-products-search
-      @enterLeaveTrigger
-      class="restaurant__search"
+    <app-catalog
+      class="restaurant__catalog"
       [catalog]="data.catalog"
-      (closeSearch)="closeSearch()"
+      [restaurant]="data.restaurant"
     />
-  }
 
-  <app-total class="restaurant__total" />
+    @if (isSearchOpen) {
+      <app-products-search
+        @enterLeaveTrigger
+        class="restaurant__search"
+        [catalog]="data.catalog"
+        (closeSearch)="closeSearch()"
+      />
+    }
+
+    <app-total class="restaurant__total" />
+  } @else {
+    <p>Couldn't find catalog. Please try again or contact support</p>
+  }
 } @else {
   <app-loading />
 }

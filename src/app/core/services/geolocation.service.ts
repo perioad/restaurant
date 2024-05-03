@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Coordinates } from '../models/coordinates.model';
+import { Coordinates } from '../../common/models/coordinates.model';
 import { Observable, from, map, catchError, of } from 'rxjs';
 
 @Injectable({

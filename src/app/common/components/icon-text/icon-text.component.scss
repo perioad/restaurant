@@ -1,5 +1,7 @@
+@import "variables";
+
 :host {
-  color: #a8a8c8;
+  color: $color-details;
   display: flex;
   align-items: center;
 }

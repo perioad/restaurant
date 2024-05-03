@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../../core/services/cart.service';
 import { AsyncPipe } from '@angular/common';
-import { CurrencyPipe } from '../../../core/pipes/currency.pipe';
+import { CurrencyPipe } from '../../pipes/currency.pipe';
 import { RouterModule } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
 

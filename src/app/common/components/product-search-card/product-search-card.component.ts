@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../models/product.model';
-import { CurrencyPipe } from '../../../core/pipes/currency.pipe';
+import { CurrencyPipe } from '../../pipes/currency.pipe';
 import { ChevronButtonComponent } from '../chevron-button/chevron-button.component';
 import { ImageComponent } from '../image/image.component';
 

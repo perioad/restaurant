@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { Restaurant } from '../../../../common/models/restaurant.model';
+import { Restaurant } from '../../models/restaurant.model';
 import { AsyncPipe, UpperCasePipe } from '@angular/common';
-import { IconTextComponent } from '../../../../common/components/icon-text/icon-text.component';
-import { StarIconComponent } from '../../../../common/icons/star/star.component';
-import { MapPinIconComponent } from '../../../../common/icons/map-pin/map-pin.component';
-import { DetailsComponent } from '../../../../common/components/details/details.component';
-import { ImagePlaceholderComponent } from '../../../../common/components/image-placeholder/image-placeholder.component';
-import { DistancePipe } from '../../../../common/pipes/distance.pipe';
-import { ImageComponent } from '../../../../common/components/image/image.component';
+import { IconTextComponent } from '../icon-text/icon-text.component';
+import { StarIconComponent } from '../../icons/star/star.component';
+import { MapPinIconComponent } from '../../icons/map-pin/map-pin.component';
+import { DetailsComponent } from '../details/details.component';
+import { DistancePipe } from '../../pipes/distance.pipe';
+import { ImageComponent } from '../image/image.component';
 
 @Component({
   selector: 'app-restaurant-card',

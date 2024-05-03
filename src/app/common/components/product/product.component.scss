@@ -61,7 +61,8 @@
     background-color: $color-main-dark;
     color: $color-main-light;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       transform: rotate(90deg) scale(1.1);
     }
   }
@@ -71,7 +72,8 @@
     border: 1px solid $color-main-dark;
     color: $color-main-dark;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       transform: rotate(-180deg) scale(1.1);
     }
   }

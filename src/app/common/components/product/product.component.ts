@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { PlusIconComponent } from '../../icons/plus/plus.component';
-import { CurrencyPipe } from '../../../core/pipes/currency.pipe';
+import { CurrencyPipe } from '../../pipes/currency.pipe';
 import { MinusIconComponent } from '../../icons/minus/minus.component';
 import { ImageComponent } from '../image/image.component';
 

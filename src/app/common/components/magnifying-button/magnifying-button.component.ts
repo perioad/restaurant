@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MagnifyingIconComponent } from '../../icons/magnifying/magnifying.component';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 
