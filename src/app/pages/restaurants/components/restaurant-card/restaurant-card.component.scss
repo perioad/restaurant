@@ -10,14 +10,8 @@
 .restaurant-card {
   position: relative;
 
-  &__bg-img,
-  &__logo-img {
-    width: 100%;
-    object-fit: contain;
-  }
-
   &__bg-img-container {
-    min-height: 130px;
+    height: 130px;
   }
 
   &__logo-img-container {

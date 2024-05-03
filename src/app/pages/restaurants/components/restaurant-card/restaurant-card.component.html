@@ -1,14 +1,10 @@
 <div class="restaurant-card__bg-img-container">
-  @if (!isImgError) {
-    <img
-      class="restaurant-card__bg-img"
-      alt=""
-      [src]="restaurant.image"
-      (error)="handleImgError()"
-    />
-  } @else {
-    <app-image-placeholder />
-  }
+  <app-image
+    class="restaurant-card__bg-img"
+    alt=""
+    objectFit="cover"
+    [src]="restaurant.image"
+  />
 </div>
 
 <div class="restaurant-card__info">
@@ -17,16 +13,11 @@
     [style.width]="logoSize + 'px'"
     [style.height]="logoSize + 'px'"
   >
-    @if (!isLogoError) {
-      <img
-        class="restaurant-card__logo-img"
-        alt=""
-        [src]="restaurant.logo"
-        (error)="handleLogoError()"
-      />
-    } @else {
-      <app-image-placeholder />
-    }
+    <app-image
+      class="restaurant-card__logo-img"
+      alt=""
+      [src]="restaurant.logo"
+    />
   </div>
 
   <app-details

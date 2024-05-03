@@ -1,0 +1,17 @@
+@if (isLoading) {
+  <div class="image__loader"></div>
+}
+
+<img
+  class="image__img"
+  [class.image__img--show]="!isLoading && !isError"
+  [style.object-fit]="objectFit"
+  [src]="src"
+  [alt]="alt"
+  (load)="onLoad()"
+  (error)="onError()"
+/>
+
+@if (isError) {
+  <app-image-placeholder class="image__placeholder" />
+}

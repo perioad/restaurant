@@ -7,6 +7,7 @@ import { MapPinIconComponent } from '../../../../common/icons/map-pin/map-pin.co
 import { DetailsComponent } from '../../../../common/components/details/details.component';
 import { ImagePlaceholderComponent } from '../../../../common/components/image-placeholder/image-placeholder.component';
 import { DistancePipe } from '../../../../common/pipes/distance.pipe';
+import { ImageComponent } from '../../../../common/components/image/image.component';
 
 @Component({
   selector: 'app-restaurant-card',
@@ -18,8 +19,8 @@ import { DistancePipe } from '../../../../common/pipes/distance.pipe';
     StarIconComponent,
     MapPinIconComponent,
     DetailsComponent,
-    ImagePlaceholderComponent,
     DistancePipe,
+    ImageComponent,
   ],
   templateUrl: './restaurant-card.component.html',
   styleUrl: './restaurant-card.component.scss',
@@ -33,13 +34,5 @@ export class RestaurantCardComponent {
 
   rating(): string {
     return `${this.restaurant.ratings.average} (${this.restaurant.ratings.total})`;
-  }
-
-  handleImgError() {
-    this.isImgError = true;
-  }
-
-  handleLogoError() {
-    this.isLogoError = true;
   }
 }

@@ -1,0 +1,42 @@
+@import "variables";
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  &__loader {
+    width: inherit;
+    height: inherit;
+    background-color: $color-image-loader-to;
+    background-image: linear-gradient(
+      30deg,
+      $color-image-loader-from,
+      $color-image-loader-to
+    );
+    background-size: 200% 100%;
+    animation: loading 3s infinite;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+
+    &--show {
+      display: block;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -100% -50%;
+  }
+}

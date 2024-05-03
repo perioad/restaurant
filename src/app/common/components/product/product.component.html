@@ -1,14 +1,5 @@
 <div class="product__img-container">
-  @if (!isImgError) {
-    <img
-      class="product__img"
-      alt=""
-      [src]="product.image"
-      (error)="handleImgError()"
-    />
-  } @else {
-    <app-image-placeholder class="product__img-placeholder" />
-  }
+  <app-image class="product__img" alt="" [src]="product.image" />
 </div>
 
 <h4 class="product__title">{{ product.name }}</h4>

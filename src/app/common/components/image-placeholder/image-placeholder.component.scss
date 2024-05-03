@@ -2,13 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: inherit;
+  height: inherit;
 }
 
 .image-placeholder {
   &__icon {
     display: block;
-    width: 50%;
+    width: inherit;
+    height: inherit;
   }
 }
