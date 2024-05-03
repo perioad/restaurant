@@ -9,6 +9,7 @@
   &__message {
     font-size: 20px;
     margin-bottom: 20px;
+    text-align: justify;
   }
 
   &__cat-img {
@@ -17,5 +18,45 @@
     width: 100%;
     margin: 0 auto;
     box-shadow: 0px 10px 20px 0px $color-box-shadow;
+  }
+
+  &__total {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+
+  &__restaurant-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+
+  &__restaurant-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+
+  &__restaurant-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__restaurant-item-title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__restaurant-item-img {
+    border-radius: 9px;
+    max-width: 60px;
+    width: 100%;
+    box-shadow: 0px 10px 20px 0px $color-box-shadow;
+    overflow: hidden;
   }
 }

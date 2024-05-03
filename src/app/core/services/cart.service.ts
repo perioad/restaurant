@@ -4,6 +4,7 @@ import { produce } from 'immer';
 import { Cart } from '../../common/models/cart.model';
 import { Product } from '../../common/models/product.model';
 import { Restaurant } from '../../common/models/restaurant.model';
+import { add, subtract } from '../../common/utils/math.utils';
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +42,7 @@ export class CartService {
 
       if (item) {
         item.quantity += 1;
-        item.priceTotal += product.price;
+        item.priceTotal = add(item.priceTotal, product.price);
       } else {
         restaurant.items.push({
           product,
@@ -54,6 +55,7 @@ export class CartService {
     });
 
     this._cart$.next(nextCart);
+    console.log('nextCart: ', nextCart);
   }
 
   removeFromCart(product: Product, chosenRestaurant: Restaurant): void {
@@ -75,7 +77,7 @@ export class CartService {
 
           if (item.quantity > 1) {
             item.quantity -= 1;
-            item.priceTotal = item.quantity * item.product.price;
+            item.priceTotal = subtract(item.priceTotal, item.product.price);
           } else {
             items.splice(itemIndex, 1);
 
@@ -117,7 +119,7 @@ export class CartService {
 
     for (const restaurant of cart.restaurants) {
       for (const item of restaurant.items) {
-        totalCartPrice += item.priceTotal;
+        totalCartPrice = add(totalCartPrice, item.priceTotal);
       }
     }
 

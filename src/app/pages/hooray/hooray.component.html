@@ -1,13 +1,46 @@
-@if (isLoading) {
-  <app-loading />
-} @else {
-  <p class="hooray__message">
-    Sit back, relax and soon you will be as full and happy as this cat :)
-  </p>
+@if (cart$ | async; as cart) {
+  @if (cart.priceTotal) {
+    <p class="hooray__message">
+      Sit back, relax and soon you will be as full and happy as this cat :)
+    </p>
 
-  <img
-    class="hooray__cat-img"
-    src="assets/images/full-cat.jpeg"
-    alt="full and happy ginger cat"
-  />
+    <img
+      class="hooray__cat-img"
+      src="assets/images/full-cat.jpeg"
+      alt="full and happy ginger cat"
+    />
+
+    <h2 class="hooray__total">Total Price: ${{ cart.priceTotal }}</h2>
+
+    @for (restaurant of cart.restaurants; track restaurant.id) {
+      <div>
+        <h3 class="hooray__restaurant-title">{{ restaurant.name }}</h3>
+
+        <div class="hooray__restaurant-items">
+          @for (item of restaurant.items; track item.product.name) {
+            <div class="hooray__restaurant-item">
+              <div>
+                <h4 class="hooray__restaurant-item-title">
+                  {{ item.product.name }}
+                </h4>
+
+                <p>Quantity: {{ item.quantity }}</p>
+
+                <p>Total: ${{ item.priceTotal }}</p>
+              </div>
+
+              <app-image
+                class="hooray__restaurant-item-img"
+                [src]="item.product.image"
+              />
+            </div>
+          }
+        </div>
+      </div>
+    }
+  } @else {
+    <p>Nothing was added to the cart. Please go and choose some goodies ;)</p>
+  }
+} @else {
+  <app-loading />
 }
